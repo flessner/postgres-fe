@@ -1,5 +1,8 @@
 ARG VERSION=17
+
 FROM postgres:${VERSION}
+
+ARG VERSION=17
 
 ENV POSTGRES_DB=postgres
 ENV POSTGRES_USER=postgres

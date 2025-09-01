@@ -51,7 +51,6 @@ jobs:
       with:
         context: .
         push: true
-        build-args: |
-          VERSION=${{ matrix.postgres_version }}
+        build-args: VERSION=${{ matrix.postgres_version }}
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
