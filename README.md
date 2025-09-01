@@ -20,7 +20,7 @@ A minimal [PostgreSQL](https://github.com/postgres/postgres) Docker image with e
 docker run -d --name postgres-fe \
   -p 5432:5432 \
   -e POSTGRES_PASSWORD=p4ssw0rd \
-  -v data:/var/lib/postgresql/data \
+  -v data:/var/lib/postgresql \
   ghcr.io/flessner/postgres-fe:17
 ```
 
@@ -37,7 +37,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: p4ssw0rd
     volumes:
-      - data:/var/lib/postgresql/data
+      - data:/var/lib/postgresql
     restart: unless-stopped
 
 volumes:
