@@ -1,0 +1,9 @@
+# os
+.DS_Store
+Thumbs.db
+
+# env
+.env
+
+# ai
+.claude
