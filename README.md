@@ -33,8 +33,8 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_DB: postgres
-      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres # Defaults to 'postgres'
+      POSTGRES_USER: postgres # Defaults to 'postgres'
       POSTGRES_PASSWORD: p4ssw0rd
     volumes:
       - data:/var/lib/postgresql
@@ -42,6 +42,18 @@ services:
 
 volumes:
   data:
+```
+
+
+## Notes on drizzle
+
+[Drizzle](https://orm.drizzle.team/) requires the following entry in its config to ignore the automatically generated extension tables.
+
+```ts
+export default defineConfig({
+    // ...
+    tablesFilter: ['!pg_stat_monitor', '!spatial_ref_sys', '!geography_columns', '!geometry_columns'],
+});
 ```
 
 ## Available Tags
