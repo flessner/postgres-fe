@@ -3,13 +3,9 @@ name: Build and Publish Docker Image
 on:
   push:
     branches: [ main ]
-    tags: [ 'v*' ]
-  pull_request:
-    branches: [ main ]
 
 env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository_owner }}/postgres-fe
+  IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/postgres-fe
 
 jobs:
   build-and-push:
@@ -29,22 +25,9 @@ jobs:
     - name: Log in to Container Registry
       uses: docker/login-action@v3
       with:
-        registry: ${{ env.REGISTRY }}
+        registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Extract metadata
-      id: meta
-      uses: docker/metadata-action@v5
-      with:
-        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-        tags: |
-          type=ref,event=branch,suffix=-${{ matrix.postgres_version }}
-          type=ref,event=pr,suffix=-${{ matrix.postgres_version }}
-          type=semver,pattern={{version}},suffix=-${{ matrix.postgres_version }}
-          type=semver,pattern={{major}}.{{minor}},suffix=-${{ matrix.postgres_version }}
-          type=raw,value=${{ matrix.postgres_version }},enable={{is_default_branch}}
-          type=raw,value=latest,enable=${{ matrix.postgres_version == 17 && github.ref == 'refs/heads/main' }}
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v5
@@ -52,5 +35,6 @@ jobs:
         context: .
         push: true
         build-args: VERSION=${{ matrix.postgres_version }}
-        tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }}
+        tags: |
+          ${{ env.IMAGE_NAME }}:${{ matrix.postgres_version }}
+          ${{ matrix.postgres_version == 17 && format('{0}:latest', env.IMAGE_NAME) || '' }}
