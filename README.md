@@ -11,6 +11,7 @@ A minimal [PostgreSQL](https://github.com/postgres/postgres) Docker image with e
 - **pgcrypto** - Cryptographic functions
 - **pg_stat_statements** - Query performance tracking
 - **nanoid** - Compact, URL-friendly unique identifier generation
+- **pg_trgm** - Fuzzy text search and similarity matching
 
 ## Usage
 
