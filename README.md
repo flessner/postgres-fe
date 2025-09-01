@@ -2,13 +2,15 @@
 
 A minimal [PostgreSQL](https://github.com/postgres/postgres) Docker image with essential extensions for version `15`, `16` and `17`.
 
-## Extensions
+## Features
 
 - **pgvector** - Vector similarity search for AI/ML applications
 - **postgis** - Spatial and geographic data support
 - **hstore** - Key-value pair storage
 - **pg_cron** - Database-native job scheduling
 - **pgcrypto** - Cryptographic functions
+- **pg_stat_statements** - Query performance tracking
+- **nanoid** - Compact, URL-friendly unique identifier generation
 
 ## Usage
 
