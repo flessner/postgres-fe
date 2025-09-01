@@ -15,5 +15,5 @@ RUN apt-get update && \
 RUN echo "CREATE EXTENSION IF NOT EXISTS vector;" > /docker-entrypoint-initdb.d/init-extensions.sql && \
     echo "CREATE EXTENSION IF NOT EXISTS postgis;" >> /docker-entrypoint-initdb.d/init-extensions.sql && \
     echo "CREATE EXTENSION IF NOT EXISTS hstore;" >> /docker-entrypoint-initdb.d/init-extensions.sql
-    
+
 EXPOSE 5432
