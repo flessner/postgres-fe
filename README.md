@@ -2,6 +2,7 @@
 
 A minimal [PostgreSQL](https://github.com/postgres/postgres) Docker image with essential extensions for version `15`, `16` and `17`.
 
+
 ## Features
 
 - **pgvector** - Vector similarity search for AI/ML applications
@@ -10,8 +11,8 @@ A minimal [PostgreSQL](https://github.com/postgres/postgres) Docker image with e
 - **pg_cron** - Database-native job scheduling
 - **pgcrypto** - Cryptographic functions
 - **pg_stat_statements** - Query performance tracking
-- **nanoid** - Compact, URL-friendly unique identifier generation
 - **pg_trgm** - Fuzzy text search and similarity matching
+
 
 ## Usage
 
@@ -55,6 +56,7 @@ export default defineConfig({
     tablesFilter: ['!pg_stat_monitor', '!spatial_ref_sys', '!geography_columns', '!geometry_columns'],
 });
 ```
+
 
 ## Available Tags
 
